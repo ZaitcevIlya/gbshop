@@ -1,14 +1,74 @@
+import datetime
+import json
+import os.path
+
 from django.shortcuts import render
 
+module_dir = os.path.dirname(__file__)
 
-# Create your views here.
+site_menu = [
+    {'href': 'index', 'name': 'home'},
+    {'href': 'products', 'name': 'products'},
+    {'href': 'contact', 'name': 'contact'},
+]
+
+links_menu = [
+    {'href': 'products_all', 'name': 'all'},
+    {'href': 'products_home', 'name': 'home'},
+    {'href': 'products_office', 'name': 'office'},
+    {'href': 'products_classic', 'name': 'classic'},
+]
+
+
+def base(request):
+    context = {
+        'name': 'my',
+        'current_date': datetime.datetime.now()
+    }
+    return render(request, 'mainapp/base.html', context)
+
+
 def index(request):
-    return render(request, 'mainapp/index.html')
+    context = {
+        'title': 'GB Shop',
+        'site_menu': site_menu,
+        'current_date': datetime.datetime.now()
+    }
+    return render(request, 'mainapp/index.html', context)
 
 
 def products(request):
-    return render(request, 'mainapp/products.html')
+    file_path = os.path.join(module_dir, 'fixtures/products.json')
+    with open(file_path) as f:
+        products = json.load(f)
+
+    context = {
+        'products': products,
+        'links_menu': links_menu,
+        'site_menu': site_menu,
+        'current_date': datetime.datetime.now()
+    }
+    return render(request, 'mainapp/products.html', context)
 
 
 def contact(request):
-    return render(request, 'mainapp/contact.html')
+    context = {
+        'site_menu': site_menu,
+        'current_date': datetime.datetime.now()
+    }
+    return render(request, 'mainapp/contact.html', context)
+
+
+def context(request):
+    context = {
+        'title': 'test context',
+        'header': 'Welcome to site',
+        'username': 'John',
+        'products': [
+            {'name': 'Chairs', 'price': 123},
+            {'name': 'Sofas', 'price': 323},
+            {'name': 'Tables', 'price': 223}
+        ]
+    }
+    return render(request, 'mainapp/test_context.html', context)
+
