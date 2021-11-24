@@ -59,16 +59,3 @@ def contact(request):
     return render(request, 'mainapp/contact.html', context)
 
 
-def context(request):
-    context = {
-        'title': 'test context',
-        'header': 'Welcome to site',
-        'username': 'John',
-        'products': [
-            {'name': 'Chairs', 'price': 123},
-            {'name': 'Sofas', 'price': 323},
-            {'name': 'Tables', 'price': 223}
-        ]
-    }
-    return render(request, 'mainapp/test_context.html', context)
-
