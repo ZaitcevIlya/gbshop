@@ -1,3 +1,4 @@
+{% extends 'mainapp/base.html' %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,20 +9,16 @@
 </head>
 <body>
 	<div class="container">
+        {% block menu %}
 		<div class="hero">
 			<div class="header clearfix">
-				<a href="index.html" class="logo"></a>
-				<ul class="menu">
-					<li><a href="{% url 'index' %}">домой</a></li>
-					<li><a href="{% url 'products' %}">продукты</a></li>
-					<li><a href="{% url 'contact' %}" class="active">контакты</a></li>
-				</ul>
-				<a href="#" class="search"></a>
-                <a href="#" class="basket"></a>
+                {% include 'mainapp/includes/inc_site_menu.html' %}
 			</div>
 			<h1>наши контакты</h1>
 		</div>
+        {% endblock %}
 
+        {% block content %}
 		<div class="location">
 			<div class="location-1">
 				<i class="fa fa-map-marker fa-5x"></i>
@@ -74,34 +71,7 @@
 		</div>
 
 		<div class="clr"></div>
-	</div>	
-
-    <div class="footer">
-        <div class="clearfix">
-            <div class="text-footer">
-                <h3>контакты</h3>
-            </div>
-            <div class="text-footer">
-                <h3>полезная информация</h3>
-            </div>
-            <div class="text-footer clearfix">
-                <h3>Оставайтесь на связи</h3>
-                <p>Подписаться на новости и рассылки</p>
-                <form>
-                    <input type="email" name="email" placeholder="ваш email">
-                    <a href="#"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i></a>
-                </form>
-            </div>
-        </div>
-        <p class="small">&copy; GB 2017</p>
-        <div class="social">
-            <a href="#" class="social1"></a>
-            <a href="#" class="social2"></a>
-            <a href="#" class="social3"></a>
-            <a href="#" class="social4"></a>
-        </div>
-        <p class="small">Положения &amp; Условия  /  Конфиденциальность &amp; Cookies</p>
-    </div>	
-			
+        {% endblock %}
+	</div>
 </body>
 </html>
