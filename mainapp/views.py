@@ -9,7 +9,7 @@ module_dir = os.path.dirname(__file__)
 
 site_menu = [
     {'href': 'main', 'name': 'home'},
-    {'href': 'products:index', 'name': 'products'},
+    {'href': 'products:product', 'name': 'product'},
     {'href': 'contact', 'name': 'contact'},
 ]
 
@@ -42,7 +42,7 @@ def products(request, pk=None):
     products = Product.objects.all()
     content = {
         "title": title,
-        "products": products,
+        "products": products[:3],
         'categories': categories,
         'site_menu': site_menu,
         'current_product': products.first(),
