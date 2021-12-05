@@ -1,0 +1,1 @@
+[{"model": "mainapp.productcategory", "pk": 3, "fields": {"name": "Home", "description": "Furniture for home"}}, {"model": "mainapp.productcategory", "pk": 4, "fields": {"name": "Office", "description": "Office furniture"}}, {"model": "mainapp.productcategory", "pk": 5, "fields": {"name": "Classic", "description": "Special classic stuff"}}]
