@@ -3,20 +3,20 @@ import json
 import os.path
 
 from django.shortcuts import render
+from mainapp.models import Product, ProductCategory
 
 module_dir = os.path.dirname(__file__)
 
 site_menu = [
-    {'href': 'index', 'name': 'home'},
-    {'href': 'products', 'name': 'products'},
+    {'href': 'main', 'name': 'home'},
+    {'href': 'products:index', 'name': 'products'},
     {'href': 'contact', 'name': 'contact'},
 ]
 
-links_menu = [
-    {'href': 'products_all', 'name': 'all'},
-    {'href': 'products_home', 'name': 'home'},
-    {'href': 'products_office', 'name': 'office'},
-    {'href': 'products_classic', 'name': 'classic'},
+categories = [
+    {'href': 'products/home', 'name': 'home'},
+    {'href': 'products/office', 'name': 'office'},
+    {'href': 'products/classic', 'name': 'classic'},
 ]
 
 
@@ -28,27 +28,27 @@ def base(request):
     return render(request, 'mainapp/base.html', context)
 
 
-def index(request):
+def main(request):
     context = {
         'title': 'GB Shop',
         'site_menu': site_menu,
         'current_date': datetime.datetime.now()
     }
-    return render(request, 'mainapp/index.html', context)
+    return render(request, 'mainapp/main.html', context)
 
 
-def products(request):
-    file_path = os.path.join(module_dir, 'fixtures/products.json')
-    with open(file_path) as f:
-        products = json.load(f)
-
-    context = {
-        'products': products,
-        'links_menu': links_menu,
+def products(request, pk=None):
+    title = 'Main'
+    products = Product.objects.all()
+    content = {
+        "title": title,
+        "products": products,
+        'categories': categories,
         'site_menu': site_menu,
+        'current_product': products.first(),
         'current_date': datetime.datetime.now()
     }
-    return render(request, 'mainapp/products.html', context)
+    return render(request, 'mainapp/products.html', content)
 
 
 def contact(request):
@@ -57,5 +57,3 @@ def contact(request):
         'current_date': datetime.datetime.now()
     }
     return render(request, 'mainapp/contact.html', context)
-
-
