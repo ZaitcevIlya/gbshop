@@ -78,6 +78,7 @@ html, body {
 }
 .basket {
 	display: block;
+	position: relative;
 	width: 23px;
 	height: 23px;	
 	background-image: url(img/basket.png);
@@ -866,20 +867,23 @@ td:first-child {
 	font-weight: 700;
 	text-transform: uppercase;
 }
-.links-menu .active {
+.links-menu li a.active {
 	color:  #212121;
 	font-size: 18px;
 	font-weight: 700;
+	border-bottom: 3px solid #212121;
 }
 .links-menu li a:hover {
 	color:  #212121;
 	font-size: 18px;
 	font-weight: 700;
+	border-bottom: 3px solid #212121;
 }
 .links-menu li a:active {
 	color:  #6c6c6c;
 	font-size: 18px;
 	font-weight: 700;
+	border-bottom: 3px solid #212121;
 }
 
 .details-products {
@@ -1065,6 +1069,19 @@ td:first-child {
 	display: block;
 }
 
+.related.category .title {
+	height: auto;
+	margin-bottom: 30px;
+}
+
+.related.category .title h2 {
+	margin-top: 50px;
+}
+
+.related.category .title .explore {
+	margin-top: 70px;
+}
+
 /*.auth-url {*/
 /*	color: #8c8c8c;*/
 /*    font-size: 14px;*/
@@ -1103,4 +1120,9 @@ td:first-child {
 
 .login-menu li span {
 	vertical-align: top;
+}
+
+.basket-counter {
+	position: absolute;
+	top: -8px;
 }

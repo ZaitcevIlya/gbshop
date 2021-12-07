@@ -2,7 +2,11 @@
 <a href="{% url 'main' %}" class="logo"></a>
 <ul class="login-menu">
     <li><a href="#" class="search"></a></li>
-    <li><a href="#" class="basket"></a></li>
+    <li><a href="{% url 'basket:view' %}" class="basket">
+        <span class="basket-counter">
+            {% if basket %} {{ basket|length }} {% endif %}
+        </span>
+    </a></li>
     {% if user.is_authenticated %}
     <li class="user-profile">
         <a href="#">
@@ -22,7 +26,7 @@
     {% for link in site_menu %}
         <li>
             <a href="{% url link.href %}"
-               class="{% if request.resolver_match.url_name == link.href %}
+               class="{% if request.resolver_match.view_name == link.href %}
                         active
                       {% endif %}">
                 {{ link.name }}
