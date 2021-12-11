@@ -4,6 +4,10 @@
     <li><a href="#" class="search"></a></li>
     <li><a href="{% url 'basket:view' %}" class="basket">
         <span class="basket-counter">
+            {% if basket %}
+                {{ basket.0.total_cost|floatformat:0 }} rub
+                ({{ basket.0.total_quantity }})
+            {% endif %}
             {% if basket %} {{ basket|length }} {% endif %}
         </span>
     </a></li>

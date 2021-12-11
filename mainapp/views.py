@@ -1,6 +1,7 @@
 import datetime
 import json
 import os.path
+import random
 
 from django.shortcuts import render, get_object_or_404
 
@@ -11,9 +12,26 @@ module_dir = os.path.dirname(__file__)
 
 site_menu = [
     {'href': 'main', 'name': 'home'},
-    {'href': 'products:product', 'name': 'product'},
+    {'href': 'products:product', 'name': 'products'},
     {'href': 'contact', 'name': 'contact'},
 ]
+
+
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
+
+
+def get_hot_product():
+    products = Product.objects.all()
+    return random.sample(list(products), 1)[0]
+
+
+def get_similar_products(hot_product):
+    similar_products =Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+    return similar_products
 
 
 def base(request):
@@ -61,18 +79,34 @@ def products(request, pk=None):
 
         return render(request, 'mainapp/products_list.html', content)
 
-    products = Product.objects.all()
+
+    hot_product = get_hot_product()
+    similar_products = get_similar_products(hot_product)
 
     content = {
         "title": title,
         'site_menu': site_menu,
         "category_menu": categories,
-        "products": products[0:3],
+        "hot_product": hot_product,
+        "similar_products": similar_products,
         "basket": basket,
-        'current_product': products.first(),
         'current_date': datetime.datetime.now()
     }
     return render(request, 'mainapp/products.html', content)
+
+
+def product(request, pk):
+    title = 'Product'
+    categories = ProductCategory.objects.all()
+
+    content = {
+        title: title,
+        "category_menu": categories,
+        "product": get_object_or_404(Product, pk=pk),
+        "basket": get_basket(request.user),
+        'site_menu': site_menu,
+    }
+    return render(request, 'mainapp/product.html', content)
 
 
 def contact(request):

@@ -1,0 +1,67 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+<div class="container">
+    {% block menu %}
+    <div class="hero-white">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_site_menu.html' %}
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+		<div class="details">
+			<div class="links clearfix">
+                <ul class="links-menu">
+                    {% for category in category_menu %}
+                        <li>
+                            <a href="{% url 'products:category' category.pk %}"
+                                class="{% if request.resolver_match.url_name == category.pk %}
+                                        active
+                                      {% endif %}">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+			</div>
+
+            <div class="details-products">
+                <div class="details-slider">
+                    <div class="slider-product">
+                        <img src="/media/{{ product.image }}">
+                    </div>
+                    <div class="slider-control">
+                        <div class="block">
+                            <a href="#"><img src="/media/{{ product.image }}" alt="ver. 1">
+                                <div class="text"></div>
+                            </a>
+                        </div>
+                        <div class="block">
+                            <a href="#"><img src="/media/{{ product.image }}" alt="ver. 2">
+                                <div class="text"></div>
+                            </a>
+                        </div>
+                        <div class="block">
+                            <a href="#"><img src="/media/{{ product.image }}" alt="ver. 3">
+                                <div class="text"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <h3 class="big-bold">{{ product.name }}</h3>
+                    <h3 class="red">{{ product.short_desc }}</h3>
+                    <p class="price">{{ product.price }}<span>руб</span></p>
+                    <a href="{% url 'basket:add' product.pk %}" class="red-button">
+                        заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </a>
+                    <div class="description-text">
+                        {{ product.description }}
+                    </div>
+				</div>
+            </div>
+        </div>
+{% endblock %}
+</div>
