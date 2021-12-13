@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    {% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" href="{% static '/fonts/font-awesome/css/font-awesome.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <h2>
+            Admin Panel
+        </h2>
+
+        {% block menu %}
+            <div class="admin-menu">
+                {% include 'adminapp/includes/inc_menu.html' %}
+            </div>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -11,6 +11,10 @@
             {% if basket %} {{ basket|length }} {% endif %}
         </span>
     </a></li>
+    {% if user.is_superuser %}
+        <li><a href="{% url 'admin:users' %}">Custom admin panel</a></li>
+    {% endif %}
+
     {% if user.is_authenticated %}
     <li class="user-profile">
         <a href="#">
