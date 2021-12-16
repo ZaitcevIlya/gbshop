@@ -1,9 +1,32 @@
+{% load static %}
 <a href="{% url 'main' %}" class="logo"></a>
+<ul class="login-menu">
+    <li><a href="#" class="search"></a></li>
+    <li><a href="{% url 'basket:view' %}" class="basket">
+        <span class="basket-counter">
+            {% if basket %} {{ basket|length }} {% endif %}
+        </span>
+    </a></li>
+    {% if user.is_authenticated %}
+    <li class="user-profile">
+        <a href="#">
+            <img width="20"
+             height="20"
+             src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'vendor/img/users/default_avatar.jpg' %} {% endif %}"
+             class="img-thumbnail">
+            <span>{{ user.username }}</span>
+        </a>
+    </li>
+    <li><a href="{% url 'users:logout' %}">Log out</a></li>
+    {% else %}
+    <li><a href="{% url 'users:login' %}">Log in</a></li>
+    {% endif %}
+</ul>
 <ul class="menu">
     {% for link in site_menu %}
         <li>
             <a href="{% url link.href %}"
-               class="{% if request.resolver_match.url_name == link.href %}
+               class="{% if request.resolver_match.view_name == link.href %}
                         active
                       {% endif %}">
                 {{ link.name }}
@@ -11,7 +34,3 @@
         </li>
     {% endfor %}
 </ul>
-<a href="#" class="search"></a>
-<a href="#" class="basket"></a>
-
-

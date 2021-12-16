@@ -23,9 +23,10 @@ from mainapp.views import main, contact
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main, name='main'),
-    path('products/', include('mainapp.urls', namespace='products')),
     path('contact', contact, name='contact'),
-    # path('products', products, name='products'),
+    path('products/', include('mainapp.urls', namespace='products')),
+    path('users/', include('users.urls', namespace='users')),
+    path('basket/', include('basket.urls', namespace='basket'))
 ]
 
 if settings.DEBUG:
