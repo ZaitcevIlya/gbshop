@@ -1,14 +1,15 @@
 window.onload = function () {
-    $('.basket_list').on('click', 'input[type="number"]', function () {
-        var target = event.target;
-        console.log(target.name); // ID of basket object
-        console.log(target.value); // quantity of basket object
+    $('.basket-list').on('change', 'input[type="number"]', function () {
+        var t_href = event.target;
 
         $.ajax({
-            url: '/baskets/edit/' + target.name + '/' + target.value + '/',
+            url: "/basket/edit/" + t_href.name + "/" + t_href.value + "/",
+
             success: function (data) {
-                $('.basket_list').html(data.result);
+                $('.basket-list').html(data.result);
             },
         });
+
+        event.preventDefault();
     });
 }

@@ -22,6 +22,10 @@ html, body {
 	min-height: 100%;
 }
 
+.container .details {
+	margin-bottom: 50px;
+}
+
 .slider {
 	height: 800px;
 	background-image: url(img/slider.jpg); 
@@ -83,6 +87,39 @@ html, body {
 	height: 23px;	
 	background-image: url(img/basket.png);
 }
+
+.basket-list {
+	margin: 20px 0;
+}
+
+.basket-record {
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.basket-record:nth-child(2n+2) {
+	background-color: #eee;
+}
+
+.basket-record .product-title {
+}
+
+.basket-record input[type='number'] {
+	width: 50px;
+    height: 40px;
+}
+
+
+.basket-record img {
+	max-height: 70px;
+}
+
+.basket-summary {
+	padding: 10px 10px;
+    font-size: 20px;
+}
+
 
 .clearfix:after {
 	content: "";
@@ -233,12 +270,10 @@ html, body {
 	text-transform: uppercase;
 	color:  #212121;
 	font-size: 18px;
+	line-height: 32px;
 	font-weight: 700;
-	line-height: 24px;
 	text-align: center;
 	float: right;
-	margin-top: 138px;
-	letter-spacing: 3px;
 	text-decoration: none;
 }
 .explore:hover {
@@ -342,18 +377,15 @@ html, body {
 	padding-right: 83px;
 }
 .title {
-	height: 152px;
 	margin-right: 15px;
 }
 .title h2 {
 	float: left;
-	margin-top: 118px;
 	color:  #212121;
-	font-size: 36px;
+	font-size: 32px;
 	font-weight: 700;
 	text-align: left;
 	margin-left: 15px;
-
 }
 
 .trending-products {
@@ -370,6 +402,7 @@ html, body {
 	height: 370px;
 	width: 370px;
 	position: relative;
+	overflow: hidden;
 }
 .trending-products a .text {
 	display: none;
@@ -541,7 +574,7 @@ html, body {
 	background-color: #f7f7f7;
 	padding-left: 99px;
 	padding-right: 98px;
-	margin: -384px auto 0;
+	margin: 0 auto;
 	clear: both;
 }
 .footer form {
@@ -889,7 +922,7 @@ td:first-child {
 .details-products {
 	padding-left: 98px;
 	padding-right: 98px;
-	margin-top: 98px;
+	margin: 78px 0 50px;
 	height: 651px; 
 }
 .details-slider {
@@ -901,6 +934,12 @@ td:first-child {
 	width: 570px;
 	height: 570px;
 }
+
+.slider-product img {
+	max-width: 570px;
+	height: 570px;
+}
+
 .slider-control {
 	width: 420px;
 	height: 70px;
@@ -914,10 +953,14 @@ td:first-child {
 	float: left;
 	margin-right: 10px;
 }
+
+.slider-control .block a img {
+	width: auto;
+	height: 70px;
+}
+
 .slider-control a .text {
 	display: none;
-	height: 70px;
-	width: 70px;
 	background-color: #fff;
     opacity: 0.7;
     position: absolute;
@@ -1006,21 +1049,13 @@ td:first-child {
 }
 
 .related {
-	padding: 0px 98px;
+	padding: 0 98px;
+	margin: 30px 0;
 }
 .related .title {
-	height: 343px;
-	margin-right: 0;
+	padding: 0 0 50px;
 }
-.related .title h2 {
-	margin-top: 245px;
-}
-.related .title .explore {
-	margin-top: 262px;
-}
-.related-products {
-	margin-bottom: 120px;
-}
+
 .related-products .block a img {
 	float: left;
 	max-height: 370px;
@@ -1071,30 +1106,7 @@ td:first-child {
 
 .related.category .title {
 	height: auto;
-	margin-bottom: 30px;
 }
-
-.related.category .title h2 {
-	margin-top: 50px;
-}
-
-.related.category .title .explore {
-	margin-top: 70px;
-}
-
-/*.auth-url {*/
-/*	color: #8c8c8c;*/
-/*    font-size: 14px;*/
-/*    font-weight: 700;*/
-/*    text-align: right;*/
-/*    text-transform: uppercase;*/
-/*    text-decoration: none;*/
-/*    padding: 10px 13px;*/
-/*	display: block;*/
-/*    position: absolute;*/
-/*	top: 54px;*/
-/*    right: 20px;*/
-/*}*/
 
 .login-menu {
 	list-style: none;

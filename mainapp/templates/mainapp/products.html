@@ -35,10 +35,12 @@
                 </ul>
 			</div>
 
+            <h1>Today's Best deal</h1>
+
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product">
-                        <img src="{{ current_product.image.url }}" width="570">
+                        <img src="{{ hot_product.image.url }}">
 					</div>
 					<div class="slider-control">
 						<div class="block">
@@ -60,27 +62,29 @@
 				</div>
 
 				<div class="description">
-					<h3 class="big-bold">{{ current_product.name }}</h3>
-					<h3 class="red">{{ current_product.short_desc }}</h3>
-					<p class="price">{{ current_product.price }}<span>руб</span></p>
-					<a href="#" class="red-button">
+					<h3 class="big-bold">{{ hot_product.name }}</h3>
+					<h3 class="red">{{ hot_product.short_desc }}</h3>
+					<p class="price">{{ hot_product.price }}<span>руб</span></p>
+					<a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
 						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
 					</a>
 					<div class="description-text">
-						{{ current_product.description }}
+						{{ hot_product.description }}
 					</div>
 				</div>
 			</div>
 
+            {% if similar_products %}
 			<div class="related">
 				<div class="title clearfix">
 					<h2>Похожие продукты</h2>
 					<a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
 				</div>
 				<div class="related-products clearfix">
-                    {% for product in products %}
+
+                    {% for product in similar_products %}
                         <div class="block">
-                            <a href="#">
+                            <a href="{% url 'products:product' product.pk %}">
                                 <img src="/media/{{ product.image }}" alt="">
                                 <div class="text">
                                     <img src="{% static 'img/icon-hover.png' %}" alt="img">
@@ -93,9 +97,8 @@
                     {% endfor %}
 				</div>
 			</div>
+            {% endif %}
 		</div>
-
-		<div class="clr"></div>
         {% endblock %}
 	</div>
 </body>

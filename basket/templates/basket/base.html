@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+    <title>
+	{% block title %}
+        {{ title | title }}
+    {% endblock %}
+    </title>
+    {% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" href="{% static '/fonts/font-awesome/css/font-awesome.css' %}">
+    {% endblock %}
+    {% block js %}
+    <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'js/basket.js' %}"></script>
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center head">
+            Your Basket
+            {% if user.first_name %}
+            {{ user.first_name|title }}
+            {% else %}
+            Stranger
+            {% endif %}
+        </h2>
+        <a href="{% url 'main' %}">Back to main</a>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
