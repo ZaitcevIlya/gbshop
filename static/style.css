@@ -92,7 +92,9 @@ html, body {
 	margin: 20px 0;
 }
 
-.basket-record {
+.basket-record,
+.category-record,
+.user-record {
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -120,6 +122,32 @@ html, body {
     font-size: 20px;
 }
 
+.btn {
+	background-color: #2dd352;
+	text-decoration: none;
+	padding: 4px 5px;
+	display: inline-block;
+}
+
+.new-category,
+.new-user {
+	margin: 15px 0 0;
+}
+
+.categories-list,
+.user-list {
+	margin: 15px 0;
+}
+
+.category-record,
+.user-record {
+	background-color: rgba(30, 126, 52, 0.16);
+}
+
+.category-record.not-active,
+.user-record.not-active {
+	background-color: rgba(126, 30, 56, 0.37);
+}
 
 .clearfix:after {
 	content: "";

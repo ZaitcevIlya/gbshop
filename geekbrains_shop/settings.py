@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'mainapp',
     'users',
-    'basket.apps.BasketConfig'
+    'basket.apps.BasketConfig',
+    'adminapp.apps.AdminappConfig'
 ]
 
 MIDDLEWARE = [
