@@ -91,10 +91,11 @@ html, body {
 .basket-list {
 	margin: 20px 0;
 }
-
+.product_read,
 .basket-record,
 .category-record,
-.user-record {
+.user-record,
+.product-record {
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -112,9 +113,13 @@ html, body {
     height: 40px;
 }
 
-
+.product-record img,
 .basket-record img {
 	max-height: 70px;
+}
+
+.product_read img {
+	max-height: 170px;
 }
 
 .basket-summary {
@@ -1165,4 +1170,29 @@ td:first-child {
 .basket-counter {
 	position: absolute;
 	top: -8px;
+}
+
+.paginator {
+	margin: 45px auto 25px;
+    width: 200px;
+    line-height: 30px;
+    font-size: 22px;
+    position: relative;
+}
+
+.paginator a {
+	color: #1b1e21;
+    font-size: 25px;
+    text-decoration: none;
+    position: absolute;
+    top: 1px;
+}
+
+.paginator a.left {
+	left: -18px;
+	margin-right: 15px;
+}
+.paginator a.right {
+	right: 0;
+	margin-left: 5px;
 }

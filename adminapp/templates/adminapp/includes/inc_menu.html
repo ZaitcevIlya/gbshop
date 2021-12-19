@@ -17,13 +17,4 @@
             {% endif %}
         </a>
     </li>
-    <li>
-        <a href="{% url 'admin:products' 1 %}"
-           class="{% if request.resolver_match.url_name == 'products' or 'products.name' %} active {% endif %}">
-            Products
-            {% if product %}
-                <span>{{ product.name }}</span>
-            {% endif %}
-        </a>
-    </li>
 </ul>

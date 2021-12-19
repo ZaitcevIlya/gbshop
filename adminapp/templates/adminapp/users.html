@@ -5,7 +5,7 @@
     <div class="user-list-block">
         <a href="{% url 'admin:user_create' %}" class="btn new-user">New user</a>
         <div class="user-list">
-            {% for object in objects %}
+            {% for object in object_list %}
                 <div class="user-record
                     {% if not object.is_active %}
                       not-active
