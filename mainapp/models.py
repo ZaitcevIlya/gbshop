@@ -18,6 +18,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products_images', blank=True)
     short_desc = models.CharField(verbose_name='product short description', max_length=64, blank=True)
     description = models.TextField(verbose_name='product description', blank=True)
+    is_active = models.BooleanField(default=True)
     price = models.DecimalField(verbose_name='product price', max_digits=8, decimal_places=2, default=0)
     quantity = models.PositiveIntegerField(verbose_name='amount at store', default=0)
 
